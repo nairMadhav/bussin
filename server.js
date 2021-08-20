@@ -19,6 +19,22 @@ mongoose.connect(mongoURI,mongoEssentials,(error)=>{
     }
     return(console.log('Connection to the database was successful'))
 })
+//================Routes=======================
+const router = require('./routes/Auth/userAuth');
+app.use(router)
+
+
+
+
+
+
+
+
+
+
+
+
+
 //server configuration
 const PORT=process.env.PORT || 5000
 app.listen(PORT,()=>{
