@@ -1,0 +1,24 @@
+.PostButtonWrapper{
+    background-color: darkorange;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    padding: 16px 30px;
+    border-radius: 999px;
+    margin-top: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    
+
+}
+.PostButtonWrapper button{
+    opacity: 0;
+    font-size: 100px;
+    position:relative;
+    left: 0;
+    top: 0;
+}
+.PostButtonWrapper:hover{
+    background-color: rgb(255, 123, 0);
+}

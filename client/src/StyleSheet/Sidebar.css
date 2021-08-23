@@ -1,0 +1,13 @@
+.sidebarContainer{
+    flex:0.2;
+    padding-left: 20px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.Logo{
+    margin: bottom 10px;
+    font-size: 60px !important;
+    color: darkorange;
+    padding-bottom: 20px;;
+}

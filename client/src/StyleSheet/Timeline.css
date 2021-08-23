@@ -1,0 +1,8 @@
+.timeline{
+    flex:0.6;
+    border: 1px solid white;
+    color: white;
+}
+.Header{
+    padding:10px;
+}
