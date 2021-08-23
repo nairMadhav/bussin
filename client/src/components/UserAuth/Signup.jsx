@@ -1,11 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import FileUploadButton from '../Timeline/FileUploadButton'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Avatar from '@material-ui/core/Avatar';
+// import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import '../../StyleSheet/Auth.css'
 import axios from 'axios'
+//import ImageIcon from '@material-ui/icons/Image';
+
+//The avatar should update after image is uploaded ideally
 
 const Signup = () => {
+
+    //const [avatar,setAvatar]=useState("")
 
     const [user,setUser]=useState({
         username:'',
@@ -13,12 +18,16 @@ const Signup = () => {
         confirmPassword:'',
         profilePic:null
     })
+    
     const handleChange=(event)=>{
-        console.log(user)
+        //const reader=new FileReader()
         setUser({
             ...user,
             [event.target.id]:event.target.files?event.target.files[0]:event.target.value
-        })
+        },
+        console.log(user),
+        //setAvatar(reader.readAsDataURL(user.profilePic))
+        )
     }
     const signUp=(event)=>{
         event.preventDefault();
@@ -45,7 +54,11 @@ const Signup = () => {
                 <label>Confirm password</label>
                 <input onChange={handleChange} type="password" placeholder="Re-Enter Password..." id='confirmPassword'></input>
 
-                <FileUploadButton Icon={AccountCircleIcon} usage="profilePictureUpload" type="file" id="profilePic" onChange={handleChange}/>
+                {/* <FileUploadButton usage="profilePictureUpload" type="file" id="profilePic" onChange={handleChange} value={user.profilePic}/> */}
+                <label htmlFor="profilePic">
+                    <Avatar src="avatar"/>
+                </label>
+                <input id="profilePic" type="file" onChange={handleChange} hidden/>
 
                 <button  className="button" type="submit" onClick={signUp}>Sign Up</button>
             </form>
