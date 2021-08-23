@@ -20,8 +20,9 @@ mongoose.connect(mongoURI,mongoEssentials,(error)=>{
     return(console.log('Connection to the database was successful'))
 })
 //================Routes=======================
-const router = require('./routes/Auth/userAuth');
-app.use(router)
+
+app.use(require('./routes/Auth/userAuth'))
+app.use(require('./routes/Posts/post'))
 
 
 
