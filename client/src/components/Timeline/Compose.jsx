@@ -2,7 +2,6 @@ import React from 'react'
 import "../../StyleSheet/Compose.css"
 import Avatar from '@material-ui/core/Avatar';
 // import FileUploadButton from './FileUploadButton';
-import PostButton from './PostButton';
 import ImageIcon from '@material-ui/icons/Image';
 // import PollIcon from '@material-ui/icons/Poll';
 import { useState } from 'react';
@@ -13,7 +12,7 @@ const Compose = () => {
     const [desc,setDesc]=useState("")
     const [file,setFile]=useState("")
     const Post=(event)=>{
-        const url="http://localhost:5000/api/upload-post"
+        const url="http://localhost:5000/api/post"
         const token=localStorage.getItem("user_id")
         const data=new FormData()
         data.append("desc",desc)
@@ -40,14 +39,16 @@ const Compose = () => {
             <div className="bottomBox">
                 <div className="fileOptions">
                 {/* <FileUploadButton Icon={ImageIcon} usage="postImage" type="file"/> */}
-                    <label htmlFor="image">
-                       <ImageIcon/>Upload an Image 
+                    <label htmlFor="image" className="ImageUpload">
+                       <ImageIcon/>
                     </label>
                     <input id="image" type="file" onChange={(e)=>{setFile(e.target.files[0]);console.log(file)}} hidden/>
                 </div>
                 <div>
-                <PostButton text="Eureka" onClick={Post}/>
+                {/* <PostButton text="Eureka" fn={Post}/> */}
+                    <button onClick={Post} disabled={desc===""} className="button"><b>Eureka!</b></button>
                 </div>
+                
             </div>
         </div>
     )

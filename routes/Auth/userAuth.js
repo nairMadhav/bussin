@@ -14,12 +14,12 @@ cloudinary.config({
 })
 
 //route for user auth
-router.post('api/user/register',(req,res)=>{
+router.post('/api/user/register',(req,res)=>{
     const form=new formidable.IncomingForm()
     form.parse(request,async(error,fields,files)=>{
-        const {username,password,confirmPass}=fields
+        const {username,password,confirmPassword}=fields
         const {profilePicture}=files
-        if(!username||!password||!confirmPass||!profilePicture){
+        if(!username||!password||!confirmPassword||!profilePicture){
             return(res.status(400).json({message:"All fields must be entered"}))
         }
         //checking for duplicate users

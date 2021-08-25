@@ -35,10 +35,17 @@ const Signup = () => {
         data.append('username',user.username)
         data.append('password',user.password)
         data.append('confirmPassword',user.confirmPassword)
-        data.append('profilePic',user.profilePic)
+        data.append('profilePicture',user.profilePic)
 
         const URL="http://localhost:5000/api/user/register"
-        axios.post(URL,data).then((res) => {alert(res.data.message);}).catch((err)=>{console.log(err);})
+        axios
+        .post(URL,data)
+        .then((res) => {
+            alert(res.data.message);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     }
     return (
         <div className="formContainer">
