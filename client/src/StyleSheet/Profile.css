@@ -1,0 +1,16 @@
+.ProfileContainer{
+    display: flex;
+    flex-direction: column;
+    flex:0.8;
+    border: 1px solid white;
+    color: white;
+    height:100vw;
+    padding:100px;
+}
+.HeaderContainer{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 0.1px solid white;
+    justify-content: center;
+    padding: 0 40vw 0 0;
+}

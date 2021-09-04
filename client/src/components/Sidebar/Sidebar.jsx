@@ -18,11 +18,11 @@ const Sidebar=()=>{
                 
             </div>
             <div className='SideBar'>
-                <SidebarElement Icon={HomeRoundedIcon} text={`Home`}/>
+                <a href="/"><SidebarElement Icon={HomeRoundedIcon} text={`Home`}/></a>
                 <SidebarElement Icon={PeopleAltIcon} text={`Connect`}/>
                 <SidebarElement Icon={WbIncandescentOutlinedIcon} text={`Ideas`}/>
-                <SidebarElement Icon={FaceSharpIcon} text={`Profile`}/>
-                <SidebarElement Icon={InboxIcon} text={`Inbox`}/>
+                <a href="/my-profile"><SidebarElement Icon={FaceSharpIcon} text={`Profile`}/></a>
+                <a href="/inbox"><SidebarElement Icon={InboxIcon} text={`Inbox`}/></a>
             </div>
         </div>
     )

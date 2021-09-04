@@ -37,14 +37,14 @@ const Signup = () => {
         data.append('confirmPassword',user.confirmPassword)
         data.append('profilePicture',user.profilePic)
 
-        const URL="http://localhost:5000/api/user/register"
+        const URL="http://localhost:5000/api/user/register";
         axios
         .post(URL,data)
         .then((res) => {
             alert(res.data.message);
         })
         .catch((err)=>{
-            console.log(err);
+            alert(err.response.data.message);
         })
     }
     return (
@@ -65,9 +65,9 @@ const Signup = () => {
                 <label htmlFor="profilePic">
                     <Avatar src="avatar"/>
                 </label>
-                <input id="profilePic" type="file" onChange={handleChange} hidden/>
-
+                <input id="profilePic" type="file" onChange={handleChange} accept="image/*" hidden/>
                 <button  className="button" type="submit" onClick={signUp}>Sign Up</button>
+               
             </form>
             
         </div>

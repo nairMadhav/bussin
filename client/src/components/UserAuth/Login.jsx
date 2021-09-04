@@ -27,7 +27,9 @@ const Login = () => {
             localStorage.setItem("uid",res.data.token)
             localStorage.setItem("profilePic",res.data.profilePic)
         }).catch((err)=>{
-            console.log(err);
+            
+            console.log(err.response)
+            
         })
     }
     return (

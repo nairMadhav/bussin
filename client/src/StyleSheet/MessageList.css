@@ -1,0 +1,11 @@
+.MessageListContainer{
+    flex:0.3;
+    border: 1px solid white;
+    color: white;
+    height:100vw;
+    
+}
+.Header{
+    padding:11px;
+    border-bottom: 0.1px white solid;
+}

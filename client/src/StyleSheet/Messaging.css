@@ -1,9 +1,10 @@
-.timeline{
+.messaging{
+    display: flex;
     flex:0.8;
+    flex-direction: row;
     border: 1px solid white;
     color: white;
     height:100vw;
-    margin-right: 20%;
 }
 .Header{
     padding:10px;

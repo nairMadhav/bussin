@@ -1,0 +1,12 @@
+.MessageWindowContainer{
+    flex:0.7;
+    border: 1px solid white;
+    color: white;
+    height:100vw;
+}
+.userHeader{
+    display: flex;
+    justify-content: flex-start;
+    padding:10px;
+    border-bottom: 0.1px solid white;
+}

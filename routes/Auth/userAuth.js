@@ -1,5 +1,5 @@
 const router=require('express').Router()
-const userModel=require('../../model/User/user')
+const userModel=require('../../model/User/user.js')
 const formidable = require('formidable');//body parser
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
@@ -16,18 +16,31 @@ cloudinary.config({
 //route for user auth
 router.post('/api/user/register',(req,res)=>{
     const form=new formidable.IncomingForm()
-    form.parse(request,async(error,fields,files)=>{
+    form.parse(req,async(error,fields,files)=>{
         const {username,password,confirmPassword}=fields
         const {profilePicture}=files
+
+        //form validation
+        const regex=/^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
         if(!username||!password||!confirmPassword||!profilePicture){
             return(res.status(400).json({message:"All fields must be entered"}))
+        }
+        if(username.length<6){
+            return(res.status(400).json({message:"Username must be atleast 6 characters"}))
+        }
+        if(password!=confirmPassword){
+            return(res.status(400).json({message:"Entered passwords do not match"}))
+        }else if(password.length<8){
+            return(res.status(400).json({message:"Password length must be atleast 8 characters"}))
+        }else if(!regex.test(password)){
+            return(res.status(400).json({message:"Password should contain atleast one number and one special character"}))
         }
         //checking for duplicate users
         const user=await(userModel.findOne({
             username:username
         }))
         if(user){
-            res.sendStatus(400).json({message:"Username taken"})
+            return res.sendStatus(400).json({message:"Username taken"})
         }
         //uploading files
         cloudinary.uploader.upload(profilePicture.path,{folder:'/bussin/profiles'},async(error,res)=>{
@@ -51,7 +64,7 @@ router.post('/api/user/register',(req,res)=>{
         })
     })
 })
-router.post('api/user/login',(req,res)=>{
+router.post('/api/user/login',(req,res)=>{
     const form=new formidable.IncomingForm()
     form.parse(req,async(error,fields,files)=>{
         const {username,password}=fields;
@@ -62,7 +75,7 @@ router.post('api/user/login',(req,res)=>{
         if(!userExists){
             return res.sendStatus(401).json({message:`user with ${username} does not exist in the database`})
         }
-        const validatedPassword=await bcrypt.compare(password,user.password)
+        const validatedPassword=async()=>await bcrypt.compare(password,userExists.password)
         if(!validatedPassword){
             return res.send(400).json({message:"invalid credentials"})
         }

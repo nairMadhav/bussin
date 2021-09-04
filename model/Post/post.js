@@ -6,7 +6,7 @@ const postSchema=mongoose.Schema({
     desc:{type:String,required:true},
     file:{type:String,required:false, default:null},
     profilePic:{type:String,required:true,default:""},
-    bulbs:{type:Number,required:true,default:0},
+    ideas:{type:Number,required:true,default:0},
     comments:{type:Array,required:false,default:[]}
 })
 const postModel=mongoose.model('postModel',postSchema)

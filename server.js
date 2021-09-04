@@ -16,8 +16,7 @@ const mongoEssentials={
 mongoose.connect(mongoURI,mongoEssentials,(error)=>{
     if(error){
         console.log(error)
-    }
-    return(console.log('Connection to the database was successful'))
+    }else{return(console.log('Connection to the database was successful'))}
 })
 //================Routes=======================
 
